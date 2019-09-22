@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.dao.AccountDao">
+
+
+    <resultMap type="com.entity.Account" id="Account">
+        <result property="accountId" column="account_id"/>
+        <result property="accountName" column="account_name"/>
+        <result property="balance" column="balance"/>
+    </resultMap>
+
+<!--    <select id="getAccount" resultMap="Account">-->
+<!--        SELECT * from account-->
+<!--        where-->
+<!--        account_id=1-->
+
+<!--    </select>-->
+
+<!--    <select id="getStringById" resultType="string">-->
+<!--        SELECT * from account-->
+<!--        where-->
+<!--        account_id=1-->
+<!--    </select>-->
+
+    <select id="getStringById" resultType="string">
+        SELECT account_name from account
+        where account_id=2
+
+    </select>
+
+<!--    <select id="getPojoAccount" resultType="com.transaction.demo.pojo.PojoAccount">-->
+<!--		select *-->
+<!--			from account a, person p-->
+<!--			where a.`account_name`=p.`account_name` AND p.`user_name`="a"-->
+<!--	</select>-->
+
+    <select id="getListList" resultMap="Account">
+         select * from account
+        <where>
+            <if test="idList != null" >
+                <foreach collection="idList" item="item" separator="or" >
+                    account_id in
+                    <foreach collection="item" item="item2" open="(" separator="," close=")">
+                        #{item2}
+                    </foreach>
+                </foreach>
+            </if>
+        </where>
+   </select>
+
+
+
+</mapper>
