@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class AccountService {
@@ -23,6 +24,43 @@ public class AccountService {
         System.out.println(name);
         return name;
     }
+
+    //入参是常规类型，resulttype是普通类型
+    public Account getAccountById(){
+        Account account=accountDao.getAccountById(2);
+        System.out.println(account.toString());
+        return account;
+    }
+
+    public List<Account> getAllAccount(){
+        List<Account> accountList=accountDao.getAllAccount();
+        System.out.println(accountList.toString());
+        return accountList;
+    }
+
+    //获取map类型
+    public Map<String,Object> getAccountAsMapById(){
+        Map<String,Object> accountMap=accountDao.getAccountAsMapById(2);
+        System.out.println(accountMap);
+        return accountMap;
+    }
+
+    //获取Account 入参@Param 是普通属性
+    public Account getAccountByIdParam(){
+        Account accountParam=accountDao.getAccountByIdParam("admin1","1");
+        System.out.println(accountParam);
+        return accountParam;
+    }
+
+    //获取Account 入参@Param 是对象
+    public List<Account> getAccountByEntityParam(){
+        Account account=new Account();
+        account.setAccountName("a");
+        List<Account> accountParam=accountDao.getAccountByEntityParam(account);
+        System.out.println(accountParam);
+        return accountParam;
+    }
+
 
     //入参是List<List<String>>  数据库操作是
     public List<Account> getListLlist(){
