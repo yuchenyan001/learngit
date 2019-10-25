@@ -3,6 +3,6 @@
 
 <mapper namespace="com.transaction.demo.dao.PersonMapper">
     <select id="getByUserName" resultType="string">
-		select account_name from person where user_name=#{userName}
-	</select>
+        select account_name from person where user_name=#{userName}
+    </select>
 </mapper>

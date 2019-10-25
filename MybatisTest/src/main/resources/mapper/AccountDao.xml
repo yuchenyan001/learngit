@@ -10,18 +10,18 @@
         <result property="balance" column="balance"/>
     </resultMap>
 
-<!--    <select id="getAccount" resultMap="Account">-->
-<!--        SELECT * from account-->
-<!--        where-->
-<!--        account_id=1-->
+    <!--    <select id="getAccount" resultMap="Account">-->
+    <!--        SELECT * from account-->
+    <!--        where-->
+    <!--        account_id=1-->
 
-<!--    </select>-->
+    <!--    </select>-->
 
-<!--    <select id="getStringById" resultType="string">-->
-<!--        SELECT * from account-->
-<!--        where-->
-<!--        account_id=1-->
-<!--    </select>-->
+    <!--    <select id="getStringById" resultType="string">-->
+    <!--        SELECT * from account-->
+    <!--        where-->
+    <!--        account_id=1-->
+    <!--    </select>-->
 
     <select id="getStringById" resultType="string">
         SELECT account_name from account
@@ -51,7 +51,7 @@
     </select>
 
     <select id="getAccountByIdParam" resultMap="Account">
-        select  *  from account where account_name = #{accountName} and account_id=#{accountId}
+        select * from account where account_name = #{accountName} and account_id=#{accountId}
     </select>
 
 
@@ -60,20 +60,20 @@
         *
         from account where 1=1
         <!-- 因为传进来的是对象所以这样写是取不到值得 -->
-        <if test="account.accountName!=null  and account.accountName!=''">   and   account_name = #{account.accountName}  </if>
+        <if test="account.accountName!=null  and account.accountName!=''">and account_name = #{account.accountName}</if>
     </select>
 
     <!--    <select id="getPojoAccount" resultType="com.transaction.demo.pojo.PojoAccount">-->
-<!--		select *-->
-<!--			from account a, person p-->
-<!--			where a.`account_name`=p.`account_name` AND p.`user_name`="a"-->
-<!--	</select>-->
+    <!--		select *-->
+    <!--			from account a, person p-->
+    <!--			where a.`account_name`=p.`account_name` AND p.`user_name`="a"-->
+    <!--	</select>-->
 
     <select id="getListList" resultMap="Account">
-         select * from account
+        select * from account
         <where>
-            <if test="idList != null" >
-                <foreach collection="idList" item="item" separator="or" >
+            <if test="idList != null">
+                <foreach collection="idList" item="item" separator="or">
                     account_id in
                     <foreach collection="item" item="item2" open="(" separator="," close=")">
                         #{item2}
@@ -81,8 +81,7 @@
                 </foreach>
             </if>
         </where>
-   </select>
-
+    </select>
 
 
 </mapper>

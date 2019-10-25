@@ -25,10 +25,10 @@ public interface AccountDao {
     Map<String, Object> getAccountAsMapById(Integer id);
 
     //@param 注解单一属性 这个param必须要与mapper中一致
-    Account getAccountByIdParam(@Param("accountName") String accountName,@Param("accountId") String accountId);
+    Account getAccountByIdParam(@Param("accountName") String accountName, @Param("accountId") String accountId);
 
     List<Account> getAccountByEntityParam(@Param("account") Account user);
 
-    List<Account> getListList(@Param("idList")List<List<String>> splitList);
+    List<Account> getListList(@Param("idList") List<List<String>> splitList);
 
 }
